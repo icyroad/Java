@@ -3,11 +3,14 @@ package chapter07.exercise;
 public class Customer {
 	private 	String firstName;
 	private String lastName;
-	private BankAccount account;
+	private BankAccount[] accounts;
+	private int numberOfAccounts;
 	
 	public Customer(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		accounts = new BankAccount[5];
+		
 	}
 
 	public String getFirstName() {
@@ -18,16 +21,25 @@ public class Customer {
 		return lastName;
 	}
 
-	public BankAccount getAccount() {
-		return account;
+	public BankAccount getAccount(int index) {
+		return accounts[index];
 	}
 
 	public void setAccount(BankAccount account) {
-		this.account = account;
+		accounts[numberOfAccounts] = account;
+	}
+	
+	public void addAccount(BankAccount account) {
+		accounts[numberOfAccounts] = account;
+		numberOfAccounts++;
+	}
+	
+	public int getNumberOfAccounts() {
+		return numberOfAccounts;
 	}
 	
 	public String toString() {
-		return String.format("이름: " + getFirstName() + " " + getLastName() + ", 잔고: " + account.getBalance() + "원");
+		return String.format("이름: " + getFirstName() + " " + getLastName() + ", 계좌의 개수: " + numberOfAccounts);
 		
 	}
 	
